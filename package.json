@@ -2,9 +2,11 @@
   "name": "MPiC",
   "version": "0.1.0",
   "dependencies": {
-    "express": "4.14.0",
-    "underscore": "1.8.3",
     "body-parser": "1.15.2",
-    "method-override": "2.3.7"
+    "express": "4.14.0",
+    "finalhandler": "^0.5.1",
+    "method-override": "2.3.7",
+    "python-shell": "^0.4.0",
+    "underscore": "1.8.3"
   }
 }
