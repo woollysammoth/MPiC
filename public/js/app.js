@@ -1,10 +1,10 @@
 $(document).ready(function(){
 
-	window.MPiC = function(){
+	var App = function(){
 
 	};
 
-	MPiC.prototype = $.extend({}, MPiC.prototype, {
+	App.prototype = $.extend({}, App.prototype, {
 		init: function(){
 			this.getSets();
 		},
@@ -28,6 +28,8 @@ $(document).ready(function(){
 		}
 	});
 
+
+	window.MPiC = new App();
 
 	MPiC.init();
 });

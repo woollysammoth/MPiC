@@ -43,7 +43,7 @@ e.route("/*").get(function(req, res){
 
 e.use(router);
 
-GLOBAL.sbpy = new PythonShell('samplerbox.py', {scriptPath: '/home/pi/SamplerBox/samplerbox.py'});
+GLOBAL.sbpy = new PythonShell('samplerbox.py', {scriptPath: '/home/pi/SamplerBox/'});
 
 e.listen(3000, function() {
 	console.log('MPiC | %s:%d', e.settings.env, 3000);
