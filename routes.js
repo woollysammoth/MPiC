@@ -67,6 +67,12 @@ var Routes = {
 			});
 			return;
 		});
+	},
+	increasePreset: function(req, res){
+		GLOBAL.sbpy.send("1");
+	},
+	decreasePreset: function(req, res){
+		GLOBAL.sbpy.send("-1");
 	}
 }
 

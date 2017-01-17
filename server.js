@@ -2,7 +2,8 @@ var express = require('express'),
 	_ = require("underscore"),
 	bodyParser     = require('body-parser'),
 	methodOverride = require('method-override'),
-	exphbs  = require('express-handlebars');
+	exphbs  = require('express-handlebars'),
+	PythonShell = require('python-shell');
 
 var e = express(),
 	router = express.Router(),
@@ -27,20 +28,22 @@ e.use(methodOverride());
 e.engine('handlebars', hbs.engine);
 e.set('view engine', 'handlebars');
 
-// e.route("/api/login").post(misc.login);
-// e.route("/api/logout").get(misc.logout);
-// e.route("/api/join").post(misc.signup);
+
+e.route("/sample").post(routes.createSample);
 
 e.route("/sets").get(routes.getSets);
 e.route("/sets").post(routes.createSet);
 
-e.route("/sample").post(routes.createSample);
+e.route("/preset/increase").get(routes.increasePreset);
+e.route("/preset/decrease").get(routes.decreasePreset);
 
 e.route("/*").get(function(req, res){
 	res.render("app");
 });
 
 e.use(router);
+
+GLOBAL.sbpy = new PythonShell('/home/pi/SamplerBox/samplerbox.py');
 
 e.listen(3000, function() {
 	console.log('MPiC | %s:%d', e.settings.env, 3000);
