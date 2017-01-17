@@ -10,7 +10,7 @@ var e = express(),
 		defaultLayout: 'app'
 	});
 
-var routes = {};
+var routes = require("./routes");
 
 e.use("/css", express.static(__dirname + '/public/css'));
 e.use("/img", express.static(__dirname + '/public/img'));
@@ -30,6 +30,11 @@ e.set('view engine', 'handlebars');
 // e.route("/api/login").post(misc.login);
 // e.route("/api/logout").get(misc.logout);
 // e.route("/api/join").post(misc.signup);
+
+e.route("/sets").get(routes.getSets);
+e.route("/sets").post(routes.createSet);
+
+e.route("/sample").post(routes.createSample);
 
 e.route("/*").get(function(req, res){
 	res.render("app");
