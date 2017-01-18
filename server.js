@@ -2,8 +2,9 @@ var express = require('express'),
 	_ = require("underscore"),
 	bodyParser     = require('body-parser'),
 	methodOverride = require('method-override'),
-	exphbs  = require('express-handlebars'),
-	PythonShell = require('python-shell');
+	exphbs  = require('express-handlebars');
+
+var python = require('node-python');
 
 var e = express(),
 	router = express.Router(),
@@ -43,7 +44,7 @@ e.route("/*").get(function(req, res){
 
 e.use(router);
 
-GLOBAL.sbpy = new PythonShell('samplerbox.py', {scriptPath: '/home/pi/SamplerBox/'});
+GLOBAL.sbpy = python.import('/home/pi/SamplerBox/samplerbox');
 
 e.listen(3000, function() {
 	console.log('MPiC | %s:%d', e.settings.env, 3000);
