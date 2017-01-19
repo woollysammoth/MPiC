@@ -4,7 +4,7 @@ var express = require('express'),
 	methodOverride = require('method-override'),
 	exphbs  = require('express-handlebars');
 
-var python = require('node-python');
+var Python = require('python-shell');
 
 var e = express(),
 	router = express.Router(),
@@ -44,7 +44,7 @@ e.route("/*").get(function(req, res){
 
 e.use(router);
 
-GLOBAL.sbpy = python.import('/home/pi/SamplerBox/samplerbox');
+GLOBAL.sbpy = new Python('samplerbox.py', {scriptPath: '/home/pi/SamplerBox/'});
 
 e.listen(3000, function() {
 	console.log('MPiC | %s:%d', e.settings.env, 3000);

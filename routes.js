@@ -69,13 +69,13 @@ var Routes = {
 		});
 	},
 	increasePreset: function(req, res){
-		GLOBAL.sbpy.increasePreset();
+		GLOBAL.sbpy.send("1");
 		res.json({
 			success: true
 		})
 	},
 	decreasePreset: function(req, res){
-		GLOBAL.sbpy.decreasePreset();
+		GLOBAL.sbpy.send("-1");
 		res.json({
 			success: true
 		})
